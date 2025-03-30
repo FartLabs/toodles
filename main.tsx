@@ -1,5 +1,5 @@
 import { Get, Router } from "@fartlabs/rtx";
-import { TODOsPage } from "#/components/todos-page/todos-page.tsx";
+import { TodosPage } from "#/components/todos-page/todos-page.tsx";
 
 const router = (
   <Router default={() => new Response("Not found", { status: 404 })}>
@@ -7,7 +7,7 @@ const router = (
       pattern="/"
       handle={() => {
         return new Response(
-          <TODOsPage />,
+          <TodosPage />,
           { headers: { "content-type": "text/html" } },
         );
       }}

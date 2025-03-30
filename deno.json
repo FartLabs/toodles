@@ -7,6 +7,7 @@
   },
   "imports": {
     "#/": "./",
+    "@fartlabs/declarative": "jsr:@fartlabs/declarative@^0.0.4",
     "@fartlabs/htx": "jsr:@fartlabs/htx@^0.0.9",
     "@fartlabs/jsonx": "jsr:@fartlabs/jsonx@^0.0.11",
     "@fartlabs/rtx": "jsr:@fartlabs/rtx@^0.0.10"

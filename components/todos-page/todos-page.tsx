@@ -2,7 +2,7 @@ import { H1, P } from "@fartlabs/htx";
 import { Layout } from "#/components/layout/layout.tsx";
 import { Section } from "#/components/section/section.tsx";
 
-export function TODOsPage() {
+export function TodosPage() {
   return (
     <Layout>
       <Section>
@@ -11,6 +11,7 @@ export function TODOsPage() {
       </Section>
 
       {/* TODO: Add TODOs manager. */}
+      {/* https://github.com/ag-grid/ag-grid#setup */}
     </Layout>
   );
 }
