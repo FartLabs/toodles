@@ -1,17 +1,27 @@
-import { H1, P } from "@fartlabs/htx";
+// deno-lint-ignore-file jsx-key
+
+import { DIV, H1, SCRIPT } from "@fartlabs/htx";
 import { Layout } from "#/components/layout/layout.tsx";
 import { Section } from "#/components/section/section.tsx";
 
+const js = await Deno.readTextFile(
+  new URL(import.meta.resolve("./script.js")),
+);
+
 export function TodosPage() {
   return (
-    <Layout>
+    <Layout
+      headHTML={[
+        // https://github.com/ag-grid/ag-grid#setup
+        <SCRIPT src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js" />,
+        <SCRIPT type="module">{js}</SCRIPT>,
+      ]}
+    >
       <Section>
-        <H1>Toodles</H1>
-        <P>Your TODO list manager.</P>
+        <H1>TODO List</H1>
       </Section>
 
-      {/* TODO: Add TODOs manager. */}
-      {/* https://github.com/ag-grid/ag-grid#setup */}
+      <DIV id="todos" style="height: 500px"></DIV>
     </Layout>
   );
 }

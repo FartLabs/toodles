@@ -48,5 +48,5 @@ export function Layout(props: LayoutProps) {
 }
 
 function Favicon() {
-  return <LINK rel="icon" href="/fl-logo.png" />;
+  return <LINK rel="icon" href="https://fartlabs.org/fl-logo.png" />;
 }
