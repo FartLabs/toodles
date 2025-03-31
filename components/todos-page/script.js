@@ -43,6 +43,8 @@ const gridOptions = {
   editType: "fullRow",
   onRowValueChanged: (event) => {
     console.log("Setting row data", event);
+
+    // TODO: Apply transactional updates.
     if (event.newValue !== event.oldValue) {
       // Call the backend update function.
       // TODO: Toast on success. Throw on fail. Await async.
