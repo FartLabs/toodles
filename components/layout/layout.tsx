@@ -1,4 +1,5 @@
 import { BODY, HEAD, HR, HTML, LINK, META, TITLE } from "@fartlabs/htx";
+import { Section } from "#/components/section/section.tsx";
 import { PageNav } from "./nav.tsx";
 import { PageFoot } from "./foot.tsx";
 
@@ -40,8 +41,11 @@ export function Layout(props: LayoutProps) {
         <BODY>
           <PageNav />
           {props.children?.join("") ?? ""}
-          <HR class="fart-break" />
-          <PageFoot />
+
+          <Section>
+            <HR class="fart-break" />
+            <PageFoot />
+          </Section>
         </BODY>
       </HTML>
     );

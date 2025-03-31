@@ -10,7 +10,7 @@ export function PageNav() {
 
       <DIV class="fart-inline">
         <Button
-          content="GitHub"
+          content="Source Code"
           href="https://github.com/FartLabs"
           outbound
         />

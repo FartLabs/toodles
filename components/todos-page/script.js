@@ -1,5 +1,3 @@
-// https://www.ag-grid.com/javascript-data-grid/getting-started/
-
 // Grid Options: Contains all of the Data Grid configurations
 const gridOptions = {
   // Row Data: The data to be displayed.
@@ -30,15 +28,40 @@ const gridOptions = {
     { species: "Fish", category: "Fish", class: "Actinopterygii" },
   ],
   columnDefs: [
-    { headerName: "Species", field: "species" },
-    { headerName: "Category", field: "category" },
-    { headerName: "Class", field: "class" },
+    { field: "species" },
+    { field: "category" },
+    { field: "class" },
   ],
-  defaultColDef: { sortable: true, filter: true, editable: true },
+  defaultColDef: {
+    sortable: true,
+    filter: true,
+    editable: true,
+  },
   pagination: true,
-  paginationPageSize: 6,
+  paginationPageSize: 10,
+  paginationPageSizeSelector: [5, 10, 25, 50],
+  editType: "fullRow",
+  onRowValueChanged: (event) => {
+    console.log("Setting row data", event);
+    if (event.newValue !== event.oldValue) {
+      // Call the backend update function.
+      // TODO: Toast on success. Throw on fail. Await async.
+      updateBackend(event.data);
+    }
+  },
 };
 
 // Your Javascript code to create the Data Grid
 const myGridElement = document.querySelector("#todos");
-agGrid.createGrid(myGridElement, gridOptions);
+const myGrid = agGrid.createGrid(myGridElement, gridOptions);
+
+async function updateBackend(data) {
+  console.log("Updating backend", data);
+  // await fetch("/update", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(data),
+  // });
+}

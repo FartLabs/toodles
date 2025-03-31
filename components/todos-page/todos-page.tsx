@@ -19,9 +19,8 @@ export function TodosPage() {
     >
       <Section>
         <H1>TODO List</H1>
+        <DIV id="todos" style="height: 350px;"></DIV>
       </Section>
-
-      <DIV id="todos" style="height: 500px"></DIV>
     </Layout>
   );
 }
