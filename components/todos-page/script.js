@@ -35,21 +35,22 @@ const gridOptions = {
   defaultColDef: {
     sortable: true,
     filter: true,
-    editable: true,
+    // editable: true,
   },
+  // editType: "fullRow",
   pagination: true,
   paginationPageSize: 10,
   paginationPageSizeSelector: [5, 10, 25, 50],
-  editType: "fullRow",
+
+  // TODO: Open modal with edit form on cell click. Apply transactional updates.
+  // https://www.ag-grid.com/javascript-data-grid/column-properties/#reference-events-onCellClicked
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
   onRowValueChanged: (event) => {
     console.log("Setting row data", event);
 
-    // TODO: Apply transactional updates.
-    if (event.newValue !== event.oldValue) {
-      // Call the backend update function.
-      // TODO: Toast on success. Throw on fail. Await async.
-      updateBackend(event.data);
-    }
+    // Call the backend update function.
+    // TODO: Toast on success. Throw on fail. Await async.
+    updateBackend(event.data);
   },
 };
 
