@@ -18,5 +18,6 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "@fartlabs/jsonx"
-  }
+  },
+  "exclude": ["client.ts"]
 }
