@@ -3,14 +3,16 @@
   "tasks": {
     "start": "deno -A main.tsx",
     "dev": "deno -A --watch main.tsx",
-    "outdated": "deno outdated --update --latest"
+    "outdated": "deno outdated --update --latest",
+    "generate": "deno -A generate.ts"
   },
   "imports": {
     "#/": "./",
-    "@fartlabs/declarative": "jsr:@fartlabs/declarative@^0.0.4",
+    "@fartlabs/declarative": "jsr:@fartlabs/declarative@^0.0.5",
     "@fartlabs/htx": "jsr:@fartlabs/htx@^0.0.9",
     "@fartlabs/jsonx": "jsr:@fartlabs/jsonx@^0.0.11",
     "@fartlabs/rtx": "jsr:@fartlabs/rtx@^0.0.10",
+    "@oazapfts/runtime": "npm:@oazapfts/runtime@^1.0.4",
     "oazapfts": "npm:oazapfts@^6.2.2"
   },
   "compilerOptions": {

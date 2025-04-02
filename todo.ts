@@ -17,7 +17,7 @@ const jsonSchema = await jsonSchemaDecoratorFactoryOfFile(import.meta.url);
   },
 })
 export class Todo {
-  public constructor(public summary?: string, public completed?: Date) {}
+  public constructor(public summary?: string, public completed?: string) {}
 }
 
 export const jsonSchemaTodo = jsonSchemaOf(Todo);
