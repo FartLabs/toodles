@@ -1,12 +1,14 @@
+import { transform } from "esbuild";
 import { generateSource } from "oazapfts";
 import { server } from "./server.ts";
 
 if (import.meta.main) {
-  // TODO: Transform TypeScript to JavaScript.
-  const result = await generateSource(
+  const sourceCode = await generateSource(
     server.specification as unknown as string,
     { optimistic: true },
   );
 
-  await Deno.writeTextFile("./client.ts", result);
+  const result = await transform(sourceCode, { format: "esm", loader: "ts" });
+  await Deno.writeTextFile("./static/client.js", result.code);
+  await Deno.writeTextFile("./static/client.js.map", result.map);
 }

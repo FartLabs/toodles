@@ -12,9 +12,15 @@ export function TodosPage() {
   return (
     <Layout
       headHTML={[
-        // https://github.com/ag-grid/ag-grid#setup
         <SCRIPT src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js" />,
         <SCRIPT type="module">{js}</SCRIPT>,
+        <SCRIPT type="importmap">
+          {JSON.stringify({
+            imports: {
+              "@oazapfts/runtime": "https://esm.sh/@oazapfts/runtime",
+            },
+          })}
+        </SCRIPT>,
       ]}
     >
       <Section>

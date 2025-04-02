@@ -4,7 +4,8 @@
     "start": "deno -A main.tsx",
     "dev": "deno -A --watch main.tsx",
     "outdated": "deno outdated --update --latest",
-    "generate": "deno -A generate.ts"
+    "generate": "deno -A generate.ts",
+    "check": "deno check **/*.ts"
   },
   "imports": {
     "#/": "./",
@@ -13,11 +14,13 @@
     "@fartlabs/jsonx": "jsr:@fartlabs/jsonx@^0.0.11",
     "@fartlabs/rtx": "jsr:@fartlabs/rtx@^0.0.10",
     "@oazapfts/runtime": "npm:@oazapfts/runtime@^1.0.4",
+    "@std/http": "jsr:@std/http@^1.0.13",
+    "esbuild": "npm:esbuild@^0.25.2",
     "oazapfts": "npm:oazapfts@^6.2.2"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "@fartlabs/jsonx"
   },
-  "exclude": ["client.ts"]
+  "exclude": ["static/**"]
 }
