@@ -20,7 +20,14 @@
   },
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "@fartlabs/jsonx"
+    "jsxImportSource": "@fartlabs/jsonx",
+
+    // The deployment failed: Your deployment uses decorators. The default for
+    // 'experimentalDecorators' will be changing to 'false'. In the meantime,
+    // please explicitly set the 'experimentalDecorators' compiler option.
+    // For more information, see
+    // https://deno.com/deploy/changelog#es-decorators-are-enabled-on-deno-deploy-replacing-experimental-ts-decorators
+    "experimentalDecorators": false
   },
   "exclude": ["static/**"]
 }
