@@ -1,4 +1,5 @@
 import { BODY, HEAD, HR, HTML, LINK, META, TITLE } from "@fartlabs/htx";
+import { Section } from "#/components/section/section.tsx";
 import { PageNav } from "./nav.tsx";
 import { PageFoot } from "./foot.tsx";
 
@@ -16,7 +17,6 @@ export const defaultDescription =
 export function Layout(props: LayoutProps) {
   const title = props.title ?? defaultTitle;
   const description = props.description ?? defaultDescription;
-
   return "<!DOCTYPE html>\n" +
     (
       <HTML lang="en">
@@ -40,8 +40,10 @@ export function Layout(props: LayoutProps) {
         <BODY>
           <PageNav />
           {props.children?.join("") ?? ""}
-          <HR class="fart-break" />
-          <PageFoot />
+          <Section>
+            <HR class="fart-break" />
+            <PageFoot />
+          </Section>
         </BODY>
       </HTML>
     );
