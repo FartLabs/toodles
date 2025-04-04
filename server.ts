@@ -3,6 +3,6 @@ import { DenoKvOpenAPIServerStorage } from "@fartlabs/declarative/registry/commo
 import { Todo } from "./todo.ts";
 
 export const server = new OpenAPIServer(
-  new DenoKvOpenAPIServerStorage(await Deno.openKv("./db.kv")),
+  new DenoKvOpenAPIServerStorage(await Deno.openKv())
 );
 server.register(Todo, { path: "/api/todos" });
