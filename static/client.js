@@ -12,6 +12,11 @@ function postApiTodos(body, opts) {
     body
   })));
 }
+function getApiTodos(opts) {
+  return oazapfts.ok(oazapfts.fetchJson("/api/todos", {
+    ...opts
+  }));
+}
 function getApiTodosById(id, opts) {
   return oazapfts.ok(oazapfts.fetchJson(`/api/todos/${encodeURIComponent(id)}`, {
     ...opts
@@ -33,6 +38,7 @@ function deleteApiTodosById(id, opts) {
 export {
   defaults,
   deleteApiTodosById,
+  getApiTodos,
   getApiTodosById,
   postApiTodos,
   postApiTodosById,

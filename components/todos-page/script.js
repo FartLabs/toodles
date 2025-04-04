@@ -20,8 +20,17 @@ const gridOptions = {
 };
 
 const myGridElement = document.querySelector("#todos");
-agGrid.createGrid(myGridElement, gridOptions);
+const myGrid = agGrid.createGrid(myGridElement, gridOptions);
 
+// TODO: Refactor to production-ready.
 // TODO: Manually test the API.
-const result = await client.postApiTodos({ id: "0", summary: "Example TODO" });
+const result = await client.getApiTodos();
 console.log({ result });
+
+const addRandomTodoButton = document.createElement("button");
+addRandomTodoButton.innerText = "Add Random TODO";
+addRandomTodoButton.addEventListener("click", async () => {
+  await client.postApiTodos({ summary: "Random TODO" });
+});
+
+document.body.appendChild(addRandomTodoButton);

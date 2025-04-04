@@ -9,7 +9,7 @@
   },
   "imports": {
     "#/": "./",
-    "@fartlabs/declarative": "jsr:@fartlabs/declarative@^0.0.5",
+    "@fartlabs/declarative": "jsr:@fartlabs/declarative@^0.0.7",
     "@fartlabs/htx": "jsr:@fartlabs/htx@^0.0.9",
     "@fartlabs/jsonx": "jsr:@fartlabs/jsonx@^0.0.11",
     "@fartlabs/rtx": "jsr:@fartlabs/rtx@^0.0.15",
@@ -29,5 +29,6 @@
     // https://deno.com/deploy/changelog#es-decorators-are-enabled-on-deno-deploy-replacing-experimental-ts-decorators
     "experimentalDecorators": false
   },
-  "exclude": ["static/**"]
+  "exclude": ["static/**"],
+  "unstable": ["kv"]
 }

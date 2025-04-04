@@ -10,11 +10,7 @@ const router = <Toodles />;
 
 if (import.meta.main) {
   Deno.serve(async (request) => {
-    const response = await router.fetch(request);
-
-    // TODO: Manually test the API.
-    console.log(server.db);
-    return response;
+    return await router.fetch(request);
   });
 }
 
