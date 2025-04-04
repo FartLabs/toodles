@@ -13,10 +13,9 @@
     "@fartlabs/htx": "jsr:@fartlabs/htx@^0.0.9",
     "@fartlabs/jsonx": "jsr:@fartlabs/jsonx@^0.0.11",
     "@fartlabs/rtx": "jsr:@fartlabs/rtx@^0.0.15",
-    "@oazapfts/runtime": "npm:@oazapfts/runtime@^1.0.4",
+    "@hey-api/openapi-ts": "npm:@hey-api/openapi-ts@^0.66.3",
     "@std/http": "jsr:@std/http@^1.0.13",
-    "esbuild": "npm:esbuild@^0.25.2",
-    "oazapfts": "npm:oazapfts@^6.2.2"
+    "esbuild": "npm:esbuild@^0.25.2"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

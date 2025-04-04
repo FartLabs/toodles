@@ -1,6 +1,6 @@
 // deno-lint-ignore-file
 
-import * as client from "/static/client.js";
+import * as client from "/static/client/index.js";
 
 // https://www.ag-grid.com/javascript-data-grid/getting-started/
 

@@ -1,14 +1,19 @@
-import { transform } from "esbuild";
-import { generateSource } from "oazapfts";
+import { build } from "esbuild";
+import { createClient } from "@hey-api/openapi-ts";
 import { server } from "./server.ts";
 
 if (import.meta.main) {
-  const sourceCode = await generateSource(
-    server.specification as unknown as string,
-    { optimistic: true },
-  );
+  await createClient({
+    input: server.specification,
+    output: { path: "./static/client", format: "prettier", lint: "eslint" },
+    plugins: ["@hey-api/client-fetch"],
+  });
 
-  const result = await transform(sourceCode, { format: "esm", loader: "ts" });
-  await Deno.writeTextFile("./static/client.js", result.code);
-  await Deno.writeTextFile("./static/client.js.map", result.map);
+  await build({
+    entryPoints: ["./static/client/index.ts"],
+    outdir: "./static/client",
+    packages: "external",
+    bundle: true,
+    format: "esm",
+  });
 }

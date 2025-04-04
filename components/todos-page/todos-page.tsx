@@ -17,7 +17,7 @@ export function TodosPage() {
         <SCRIPT type="importmap">
           {JSON.stringify({
             imports: {
-              "@oazapfts/runtime": "https://esm.sh/@oazapfts/runtime",
+              "@hey-api/client-fetch": "https://esm.sh/@hey-api/client-fetch",
             },
           })}
         </SCRIPT>,
