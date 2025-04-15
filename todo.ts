@@ -1,9 +1,9 @@
 import { jsonld } from "@fartlabs/declarative/common/jsonld";
 import { createStandardMethodsDecoratorFactory } from "@fartlabs/declarative/common/google-aip/methods";
 import { createAutoSchemaDecoratorFactoryAt } from "@fartlabs/declarative/common/json-schema/auto-schema";
+import kv from "./kv.ts";
 
 const autoSchema = await createAutoSchemaDecoratorFactoryAt(import.meta);
-const kv = await Deno.openKv(":memory:");
 const standardMethods = createStandardMethodsDecoratorFactory(kv);
 
 @standardMethods("/api")
