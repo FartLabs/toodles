@@ -2,16 +2,16 @@
 
 import { serveDir } from "@std/http/file-server";
 import { Get, Router, StandardRoute } from "@fartlabs/rtx";
-import { TodosPage } from "#/components/todos-page/todos-page.tsx";
+import { routesOf } from "@fartlabs/declarative/common/router";
+import { specificationOf } from "@fartlabs/declarative/common/openapi";
 import { SwaggerUI } from "#/components/swagger-ui/swagger-ui.tsx";
-import { server } from "./server.ts";
+import { TodosPage } from "#/components/todos-page/todos-page.tsx";
+import { ToodlesAPI } from "./api.ts";
 
 const router = <Toodles />;
 
 if (import.meta.main) {
-  Deno.serve(async (request) => {
-    return await router.fetch(request);
-  });
+  Deno.serve((request) => router.fetch(request));
 }
 
 export function Toodles() {
@@ -40,11 +40,11 @@ export function Toodles() {
 function APIRoutes() {
   return (
     <Router>
-      {server.routes.map((route) => <StandardRoute {...route} />)}
+      {routesOf(ToodlesAPI).map((route) => <StandardRoute {...route} />)}
       <Get
         pattern="/openapi.json"
         handler={() => {
-          return new Response(JSON.stringify(server.specification), {
+          return new Response(JSON.stringify(specificationOf(ToodlesAPI)), {
             headers: { "Content-Type": "application/json" },
           });
         }}

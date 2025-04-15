@@ -1,19 +1,25 @@
 {
   "lock": false,
   "tasks": {
-    "start": "deno -A main.tsx",
-    "dev": "deno -A --watch main.tsx",
+    "start": {
+      "command": "deno -A main.tsx",
+      "dependencies": ["generate"]
+    },
+    "dev": {
+      "command": "deno -A --watch main.tsx",
+      "dependencies": ["generate"]
+    },
     "outdated": "deno outdated --update --latest",
     "generate": "deno -A generate.ts",
     "check": "deno check **/*.ts"
   },
   "imports": {
     "#/": "./",
-    "@fartlabs/declarative": "jsr:@fartlabs/declarative@^0.0.7",
+    "@fartlabs/declarative": "jsr:@fartlabs/declarative@^0.0.16",
     "@fartlabs/htx": "jsr:@fartlabs/htx@^0.0.9",
     "@fartlabs/jsonx": "jsr:@fartlabs/jsonx@^0.0.11",
     "@fartlabs/rtx": "jsr:@fartlabs/rtx@^0.0.15",
-    "@hey-api/openapi-ts": "npm:@hey-api/openapi-ts@^0.66.3",
+    "@hey-api/openapi-ts": "npm:@hey-api/openapi-ts@^0.66.4",
     "@std/http": "jsr:@std/http@^1.0.13",
     "esbuild": "npm:esbuild@^0.25.2"
   },
@@ -28,6 +34,6 @@
     // https://deno.com/deploy/changelog#es-decorators-are-enabled-on-deno-deploy-replacing-experimental-ts-decorators
     "experimentalDecorators": false
   },
-  "exclude": ["static/**"],
+  "exclude": ["static/client/**"],
   "unstable": ["kv"]
 }

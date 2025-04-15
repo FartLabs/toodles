@@ -22,10 +22,11 @@ const gridOptions = {
 const myGridElement = document.querySelector("#todos");
 const myGrid = agGrid.createGrid(myGridElement, gridOptions);
 
-// TODO: Refactor to production-ready.
 // TODO: Manually test the API.
 const result = await client.getApiTodos();
 console.log({ result });
+
+// TODO: Load list from API.
 
 const addRandomTodoButton = document.createElement("button");
 addRandomTodoButton.innerText = "Add Random TODO";

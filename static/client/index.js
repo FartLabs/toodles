@@ -1,6 +1,8 @@
 // static/client/client.gen.ts
 import { createClient, createConfig } from "@hey-api/client-fetch";
-var client = createClient(createConfig());
+var client = createClient(createConfig({
+  baseUrl: "http://localhost:8000"
+}));
 
 // static/client/sdk.gen.ts
 var getApiTodos = (options) => {
@@ -10,7 +12,7 @@ var getApiTodos = (options) => {
   });
 };
 var postApiTodos = (options) => {
-  return (options?.client ?? client).post({
+  return (options.client ?? client).post({
     url: "/api/todos",
     ...options,
     headers: {
@@ -19,21 +21,21 @@ var postApiTodos = (options) => {
     }
   });
 };
-var deleteApiTodosById = (options) => {
+var deleteApiTodosByTodo = (options) => {
   return (options.client ?? client).delete({
-    url: "/api/todos/{id}",
+    url: "/api/todos/{todo}",
     ...options
   });
 };
-var getApiTodosById = (options) => {
+var getApiTodosByTodo = (options) => {
   return (options.client ?? client).get({
-    url: "/api/todos/{id}",
+    url: "/api/todos/{todo}",
     ...options
   });
 };
-var postApiTodosById = (options) => {
+var postApiTodosByTodo = (options) => {
   return (options.client ?? client).post({
-    url: "/api/todos/{id}",
+    url: "/api/todos/{todo}",
     ...options,
     headers: {
       "Content-Type": "application/json",
@@ -42,9 +44,9 @@ var postApiTodosById = (options) => {
   });
 };
 export {
-  deleteApiTodosById,
+  deleteApiTodosByTodo,
   getApiTodos,
-  getApiTodosById,
+  getApiTodosByTodo,
   postApiTodos,
-  postApiTodosById
+  postApiTodosByTodo
 };

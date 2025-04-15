@@ -1,6 +1,6 @@
-# toodles
+# Toodles
 
-Oh Toodles!
+Oh, Toodles!
 
 This project is a full-stack TODO list web application.
 

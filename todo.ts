@@ -1,23 +1,17 @@
-import {
-  jsonSchemaDecoratorFactoryOfFile,
-  jsonSchemaOf,
-} from "@fartlabs/declarative/common/json-schema";
 import { jsonld } from "@fartlabs/declarative/common/jsonld";
+import { createStandardMethodsDecoratorFactory } from "@fartlabs/declarative/common/google-aip/methods";
+import { createAutoSchemaDecoratorFactoryAt } from "@fartlabs/declarative/common/json-schema/auto-schema";
 
-const jsonSchema = await jsonSchemaDecoratorFactoryOfFile(import.meta.url);
+const autoSchema = await createAutoSchemaDecoratorFactoryAt(import.meta);
+const kv = await Deno.openKv(":memory:");
+const standardMethods = createStandardMethodsDecoratorFactory(kv);
 
+@standardMethods("/api")
+@autoSchema()
 @jsonld({
   context: "https://www.w3.org/2002/12/cal/ical#",
   type: "Vtodo",
 })
-@jsonSchema({
-  properties: {
-    summary: { title: "Summary" },
-    completed: { title: "Completed" },
-  },
-})
 export class Todo {
   public constructor(public summary?: string, public completed?: string) {}
 }
-
-export const jsonSchemaTodo = jsonSchemaOf(Todo);
