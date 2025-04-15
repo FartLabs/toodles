@@ -1,6 +1,4 @@
-// deno-lint-ignore-file
-
-import * as client from "/static/client/index.js";
+import * as client from "./client/index.js";
 
 // https://www.ag-grid.com/javascript-data-grid/getting-started/
 
@@ -20,13 +18,13 @@ const gridOptions = {
 };
 
 const myGridElement = document.querySelector("#todos");
-const myGrid = agGrid.createGrid(myGridElement, gridOptions);
+const _myGrid = agGrid.createGrid(myGridElement, gridOptions);
 
 // TODO: Manually test the API.
 const result = await client.getApiTodos();
 console.log({ result });
 
-// TODO: Load list from API.
+// TODO: Load list from API into the AG Grid.
 
 const addRandomTodoButton = document.createElement("button");
 addRandomTodoButton.innerText = "Add Random TODO";
