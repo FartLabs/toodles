@@ -8,11 +8,11 @@ export function TodosPage() {
   return (
     <Layout
       headHTML={[
-        <SCRIPT src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js" />,
         <SCRIPT type="importmap">
           {JSON.stringify({
             imports: {
               "@hey-api/client-fetch": "https://esm.sh/@hey-api/client-fetch",
+              "ag-grid-community": "https://esm.sh/ag-grid-community",
             },
           })}
         </SCRIPT>,
