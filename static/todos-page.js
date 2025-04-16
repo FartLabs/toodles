@@ -18,19 +18,27 @@ const gridOptions = {
 };
 
 const myGridElement = document.querySelector("#todos");
-const _myGrid = agGrid.createGrid(myGridElement, gridOptions);
-
-// TODO: Manually test the API.
-const result = await client.getApiTodos();
-console.log({ result });
-
-// TODO: Load list from API into the AG Grid.
+const myGrid = agGrid.createGrid(myGridElement, gridOptions);
 
 const addRandomTodoButton = document.createElement("button");
 addRandomTodoButton.innerText = "Add Random TODO";
 addRandomTodoButton.addEventListener("click", async () => {
   await client.postApiTodos({ summary: "Random TODO" });
 });
-
-// TODO: wip.
 document.body.appendChild(addRandomTodoButton);
+
+// TODO: Load list from API into the AG Grid.
+// https://www.ag-grid.com/javascript-data-grid/component-loading-cell-renderer
+addEventListener("DOMContentLoaded", () => {
+  // Load list from API into the AG Grid.
+  client.getApiTodos()
+    .then((todos) => {
+      console.table({ "Loaded TODOs": todos });
+      console.log(myGrid);
+      // myGrid.api.setRowData(todos);
+    })
+    .catch((error) => {
+      console.error(error);
+      alert(error.message);
+    });
+});
