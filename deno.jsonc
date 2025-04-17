@@ -15,13 +15,13 @@
   },
   "imports": {
     "#/": "./",
-    "@fartlabs/declarative": "jsr:@fartlabs/declarative@^0.0.17",
+    "@fartlabs/declarative": "jsr:@fartlabs/declarative@^0.0.18",
     "@fartlabs/htx": "jsr:@fartlabs/htx@^0.0.9",
     "@fartlabs/jsonx": "jsr:@fartlabs/jsonx@^0.0.11",
     "@fartlabs/rtx": "jsr:@fartlabs/rtx@^0.0.15",
     "@hey-api/openapi-ts": "npm:@hey-api/openapi-ts@^0.66.4",
     "@std/http": "jsr:@std/http@^1.0.13",
-    "ag-grid-community": "npm:ag-grid-community@^33.2.3",
+    "ag-grid-community": "npm:ag-grid-community@^33.2.4",
     "esbuild": "npm:esbuild@^0.25.2"
   },
   "compilerOptions": {
