@@ -56,6 +56,12 @@ addRandomTodoButton.addEventListener("click", () => {
   }).then((result) => {
     console.log({ "Created TODO": result.data });
     myGrid.applyTransactionAsync({ add: [{ ...result.data }], addIndex: 0 });
+    myGrid.setGridOption(
+      "columnDefs",
+      uniqueKeys([result.data]).map((key) => {
+        return { headerName: key, field: key };
+      }),
+    );
   }).catch((error) => {
     console.error(error);
     alert(error.message);
