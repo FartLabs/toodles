@@ -1,18 +1,12 @@
 import {
-  ClientSideRowModelApiModule,
-  ClientSideRowModelModule,
-  ColumnAutoSizeModule,
+  AllCommunityModule,
   createGrid,
   ModuleRegistry,
 } from "ag-grid-community";
 import * as client from "./client/index.js";
 
-// https://www.ag-grid.com/javascript-data-grid/errors/200/
-ModuleRegistry.registerModules([
-  ClientSideRowModelModule,
-  ClientSideRowModelApiModule,
-  ColumnAutoSizeModule,
-]);
+// https://www.ag-grid.com/javascript-data-grid/modules/#bundles
+ModuleRegistry.registerModules([AllCommunityModule]);
 
 // https://www.ag-grid.com/javascript-data-grid/getting-started/
 
