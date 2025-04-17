@@ -100,5 +100,5 @@ export type PostApiTodosByTodoResponses = {
 export type PostApiTodosByTodoResponse = PostApiTodosByTodoResponses[keyof PostApiTodosByTodoResponses];
 
 export type ClientOptions = {
-    baseUrl: 'http://localhost:8000' | (string & {});
+    baseUrl: `${string}://${string}` | (string & {});
 };

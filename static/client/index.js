@@ -1,8 +1,6 @@
 // static/client/client.gen.ts
 import { createClient, createConfig } from "@hey-api/client-fetch";
-var client = createClient(createConfig({
-  baseUrl: "http://localhost:8000"
-}));
+var client = createClient(createConfig());
 
 // static/client/sdk.gen.ts
 var getApiTodos = (options) => {

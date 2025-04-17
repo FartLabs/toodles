@@ -16,6 +16,26 @@ const gridOptions = {
   defaultColDef: { sortable: true, filter: true, editable: true },
   pagination: true,
   paginationPageSize: 10,
+  onCellValueChanged: (event) => {
+    client.postApiTodosByTodo({
+      path: {
+        todo: event.colDef.field === "name" ? event.oldValue : event.data.name,
+      },
+      body: event.data,
+    })
+      .then((result) => {
+        console.log({ "Updated TODO": result.data });
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(error.message);
+
+        // Revert the change.
+        const oldValue = event.oldValue;
+        event.data[event.colDef.field] = oldValue;
+        myGrid.applyTransactionAsync({ update: [event.data] });
+      });
+  },
 };
 
 const myGridElement = document.querySelector("#todos");
