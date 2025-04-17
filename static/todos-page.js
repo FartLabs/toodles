@@ -1,12 +1,18 @@
 import {
+  ClientSideRowModelApiModule,
   ClientSideRowModelModule,
+  ColumnAutoSizeModule,
   createGrid,
   ModuleRegistry,
 } from "ag-grid-community";
 import * as client from "./client/index.js";
 
 // https://www.ag-grid.com/javascript-data-grid/errors/200/
-ModuleRegistry.registerModules([ClientSideRowModelModule]);
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  ClientSideRowModelApiModule,
+  ColumnAutoSizeModule,
+]);
 
 // https://www.ag-grid.com/javascript-data-grid/getting-started/
 
@@ -21,18 +27,31 @@ const gridOptions = {
 const myGridElement = document.querySelector("#todos");
 const myGrid = createGrid(myGridElement, gridOptions);
 
+// TODO: Ability to delete a TODO.
+
 const addRandomTodoButton = document.createElement("button");
+addRandomTodoButton.classList.add("fart-button");
 addRandomTodoButton.innerText = "Add Random TODO";
-addRandomTodoButton.addEventListener("click", async () => {
-  await client.postApiTodos({
+addRandomTodoButton.addEventListener("click", () => {
+  client.postApiTodos({
     body: {
       name: `todos/${crypto.randomUUID()}`,
       summary: "Random TODO",
       completed: new Date().toISOString(),
     },
+  }).then((result) => {
+    console.log({ "Created TODO": result.data });
+    myGrid.applyTransactionAsync({ add: [{ ...result.data }], addIndex: 0 });
+  }).catch((error) => {
+    console.error(error);
+    alert(error.message);
   });
 });
-document.body.appendChild(addRandomTodoButton);
+
+myGridElement.parentElement.insertBefore(
+  addRandomTodoButton,
+  myGridElement.nextSibling,
+);
 
 // TODO: Load list from API into the AG Grid.
 // https://www.ag-grid.com/javascript-data-grid/component-loading-cell-renderer
@@ -42,12 +61,15 @@ addEventListener("DOMContentLoaded", () => {
     .then(({ data: todos }) => {
       console.table(todos);
       myGrid.setGridOption("rowData", todos);
+
+      // https://www.ag-grid.com/javascript-data-grid/column-properties/#reference-header
       myGrid.setGridOption(
         "columnDefs",
         uniqueKeys(todos).map((key) => {
           return { headerName: key, field: key };
         }),
       );
+      myGrid.sizeColumnsToFit();
     })
     .catch((error) => {
       console.error(error);
